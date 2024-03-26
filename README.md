@@ -1,1 +1,1 @@
-# inequality_health
+# Income inequality and health
