@@ -1,0 +1,59 @@
+Created temporary directory: /tmp/tmp.9fLLOzMgzC
+# Host myfiles.warwick.ac.uk found: line 2
+# Host myfiles.warwick.ac.uk found: line 3
+# Host myfiles.warwick.ac.uk found: line 4
+/home/wbs/bsstng/.ssh/known_hosts updated.
+Original contents retained as /home/wbs/bsstng/.ssh/known_hosts.old
+# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
+# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
+# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
+# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
+# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
+spawn sftp u1774743@myfiles.warwick.ac.uk
+u1774743@myfiles.warwick.ac.uk's password: 
+Connected to myfiles.warwick.ac.uk.
+sftp> mget 2011_110152_110131_HealthCare_ParsedData.xlsx
+File "/2011_110152_110131_HealthCare_ParsedData.xlsx" not found.
+sftp> cd ../2012
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2013
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2014
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2015
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2016
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2017
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2018
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2019
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2020
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> cd ../2021
+Couldn't stat remote file: No such file or directory
+sftp> mget *ParsedData.*xlsx
+File "/*ParsedData.*xlsx" not found.
+sftp> bye
+Contents of TMPDIR after sftp transfer:
+total 0
