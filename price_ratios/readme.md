@@ -4,7 +4,7 @@ This directory contains scripts for the `calculate_price_per_unit` stage of the 
 
 ## Description
 
-The scripts in this directory are responsible for calculating the price per unit for each product in the dataset. This is a crucial step in the data processing pipeline, as it allows for the comparison of prices across different products and time periods.
+The scripts in this directory are responsible for calculating the price per unit for each product in the dataset. This step in the data processing pipeline allows for the comparison of prices across different products and time periods.
 
 ## Requirements
 
