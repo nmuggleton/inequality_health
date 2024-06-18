@@ -1,4 +1,4 @@
-# `calculate_price_per_unit` Directory
+# Calculate Price Per Unit
 
 This directory contains scripts for the `calculate_price_per_unit` stage of the data processing pipeline.
 
