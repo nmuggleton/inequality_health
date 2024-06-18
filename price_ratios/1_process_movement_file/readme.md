@@ -1,46 +1,45 @@
-# 1_process_movement_file
+# Process Movement File
 
-This directory contains scripts and resources related to processing movement 
-data for a given product category in a given year.
+This subdirectory contains scripts for the `1_process_movement_file` stage of the data processing pipeline.
 
-## Main Components
+## Description
 
-- `main.sh`: This is the primary script that initiates the data processing  
-  pipeline. It sets up the environment, manages file transfers, and controls the
-  execution of other scripts.
+The scripts in this subdirectory are responsible for processing the movement file. This is the first step in the data processing pipeline, preparing the movement data for subsequent stages.
 
-- `sftp_file_transfer.expect`: This is an Expect script that automates the 
-  process of transferring files via SFTP. It reads the password from a file, 
-  logs into the SFTP server, navigates to the desired directory, and downloads
-  the necessary files.
+## Requirements
 
-## Workflow
-1. The `main.sh` script starts by setting up the environment and defining 
-   necessary variables.
-
-2. It then removes the old host key for the SFTP server from the known_hosts 
-   file and fetches the new host key.
-
-3. The `sftp_file_transfer.expect` script is called to perform the SFTP file
-   transfer. It logs into the SFTP server, navigates to the directory containing
-   the movement data, and downloads the necessary files.
-
-4. After the file transfer, the `main.sh` script verifies the transfer by
-   listing the contents of the temporary directory.
-
-5. The script then imports the downloaded data into a SQLite database, creates 
-   necessary indexes, and performs batch updates to calculate the price per 
-   unit.
-
-6. Finally, the script verifies the import and calculations, and cleans up the
-   temporary directory.
+- GCCcore/13.2.0
+- SQLite/3.43.1
+- Python/3.11.5
+- Expect
 
 ## Usage
 
-To use these scripts, navigate to the `1_process_movement_file` directory and
-run the `main.sh` script. Make sure to set the necessary environment variables
-before running the script.
+To run the scripts in this subdirectory, you need to be in the `1_process_movement_file` subdirectory. Then, you can activate the Python virtual environment and load the required modules:
 
 ```bash
-cd 1_process_movement_file/
-./main.sh
+cd /path/to/calculate_price_per_unit/1_process_movement_file
+source /path/to/venv/bin/activate
+module purge
+module load GCCcore/13.2.0
+module load SQLite/3.43.1
+module load Python/3.11.5
+module load Expect
+```
+
+After the environment is set up, you can run the script:
+
+```bash
+source main.sh
+```
+
+## Files
+
+- `main.sh`: This script processes the movement file.
+- `sftp_file_transfer.expect`: This Expect script is used to perform the sftp file transfer.
+- `create_movement_table.sql`: This SQL script creates the movement table in the database.
+- `insert_into_movement_table.sql`: This SQL script inserts data into the movement table.
+
+## Note
+
+Please ensure that you have the necessary permissions and environment variables set before running these scripts. The scripts require access to certain directories and databases, which are specified by environment variables.
