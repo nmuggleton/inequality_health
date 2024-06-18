@@ -7,12 +7,6 @@
 #SBATCH --array=1-500
 
 # Try array=1-4154
-# User-specific settings
-export USER="u1774743"
-export HOST="myfiles.warwick.ac.uk"
-export PASS="/home/wbs/bsstng/.config/sftp/credentials.txt"
-export LOCALDIR="/storage/wbs/bsstng/inequality"
-export REMOTEDIR="/Shared533--BARLEVIN/consumer_panel/kilts_scanner"
 
 # Define the product module and group
 read -r YEAR PRODUCT_GROUP PRODUCT_MODULE < <(sed -n "${SLURM_ARRAY_TASK_ID}p" array.txt)
