@@ -34,6 +34,8 @@ source main.sh
 ## Files
 
 - `main.sh`: This script processes the product file.
+- `sftp_array_transfer.expect`: This Expect script is used to perform the sftp file transfer.
+- `generate_products_subset.py`: This Python script generates a subset of the product data.
 
 ## Note
 
