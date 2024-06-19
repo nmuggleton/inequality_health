@@ -1,17 +1,0 @@
-Created temporary directory: /tmp/tmp.dxOLP7oBtV
-# Host myfiles.warwick.ac.uk found: line 2
-# Host myfiles.warwick.ac.uk found: line 3
-# Host myfiles.warwick.ac.uk found: line 4
-/home/wbs/bsstng/.ssh/known_hosts updated.
-Original contents retained as /home/wbs/bsstng/.ssh/known_hosts.old
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-spawn sftp u1774743@myfiles.warwick.ac.uk
-u1774743@myfiles.warwick.ac.uk's password: couldn't change working directory to "/Shared533--BARLEVIN/consumer_panel/kilts-PanelViewSurvey-ailments/2011": no such file or directory
-    while executing
-"cd /Shared533--BARLEVIN/consumer_panel/kilts-PanelViewSurvey-ailments/2011"
-Contents of TMPDIR after sftp transfer:
-total 0

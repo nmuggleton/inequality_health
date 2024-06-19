@@ -1,35 +1,0 @@
-Created temporary directory: /tmp/tmp.SgXjb5OMbz
-# Host myfiles.warwick.ac.uk found: line 2
-# Host myfiles.warwick.ac.uk found: line 3
-# Host myfiles.warwick.ac.uk found: line 4
-/home/wbs/bsstng/.ssh/known_hosts updated.
-Original contents retained as /home/wbs/bsstng/.ssh/known_hosts.old
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-# myfiles.warwick.ac.uk:22 SSH-2.0-OpenSSH_7.4
-spawn sftp u1774743@myfiles.warwick.ac.uk
-u1774743@myfiles.warwick.ac.uk's password: 
-Connected to myfiles.warwick.ac.uk.
-sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts-PanelViewSurvey-ailments/2011 
-sftp> lcd /tmp/tmp.SgXjb5OMbz
-sftp> mget *ParsedData.*xlsx
-Fetching /Shared533--BARLEVIN/consumer_panel/kilts-PanelViewSurvey-ailments/2011/2011_110152_110131_HealthCare_ParsedData.xlsx to 2011_110152_110131_HealthCare_ParsedData.xlsx
-2011_110152_110131_HealthCare_ParsedData.xlsx   0%    0     0.0KB/s   --:-- ETA2011_110152_110131_HealthCare_ParsedData.xlsx 100%  198MB 231.1MB/s   00:00    
-Fetching /Shared533--BARLEVIN/consumer_panel/kilts-PanelViewSurvey-ailments/2011/~$2011_110152_110131_HealthCare_ParsedData.xlsx to ~$2011_110152_110131_HealthCare_ParsedData.xlsx
-~$2011_110152_110131_HealthCare_ParsedData.xl   0%    0     0.0KB/s   --:-- ETA~$2011_110152_110131_HealthCare_ParsedData.xl 100%  165   100.6KB/s   00:00    
-sftp> bye
-expect: spawn id exp3 not open
-    while executing
-"expect "sftp>""
-    ("foreach" body line 3)
-    invoked from within
-"foreach year $years {
-    # Navigate to the subdirectory
-    expect "sftp>"
-    send "cd /Shared533--BARLEVIN/consumer_panel/kilts-PanelViewSurvey-ail..."
-Contents of TMPDIR after sftp transfer:
-total 199M
--rwxr-x--- 1 bsstng bsstng 199M Jun 10 16:08 2011_110152_110131_HealthCare_ParsedData.xlsx
--rwxr-x--- 1 bsstng bsstng  165 Jun 10 16:08 ~$2011_110152_110131_HealthCare_ParsedData.xlsx
