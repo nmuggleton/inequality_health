@@ -24,30 +24,8 @@ module load GCC/13.2.0
 module load OpenMPI/4.1.6
 module load R/4.3.3
 
-R <<EOF
-
-library(data.table)
-library(stringr)
-
-files <- fread('output.txt', header = F)
-
-files <- files[!str_detect(V1, 'Annual_Files')]
-
-files[, year := str_extract(V1, '\\d{4}')]
-files[, product_group := str_extract(V1, '\\d{4}(?=_)')]
-files[, product_module := str_extract(V1, '\\d{4}(?=_\\d{4}.tsv)')]
-
-write.table(
-  files[, c('year', 'product_group', 'product_module')],
-  file = 'array.txt',
-  row.names = F,
-  col.names = F,
-  sep = '\t',
-  quote = F
-)
-
-EOF
+R make_array.R
 
 sbatch data_processing_pipeline.slurm
 
-rm output.txt array.txt
+rm params/*.txt
