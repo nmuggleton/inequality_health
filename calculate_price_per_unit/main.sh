@@ -28,7 +28,22 @@ export REMOTEDIR="/Shared533--BARLEVIN/consumer_panel/kilts_scanner"
 #Rscript make_array.R
 
 # Run the slurm script
-sbatch data_processing_pipeline.slurm
+
+# Define the range of arrays for each job
+START=1
+END=4154
+STEP=500
+
+# Loop over the range and submit a job for each subset of tasks
+for ((i=START; i<=END; i+=STEP)); do
+    j=$((i+STEP-1))
+    if ((j>END)); then
+        j=$END
+    fi
+
+    # Submit the job with the array option set to the current range of tasks
+    sbatch --array=$i-$j data_processing_pipeline.slurm
+done
 
 ## Clean up the params folder
 #rm params/*.txt

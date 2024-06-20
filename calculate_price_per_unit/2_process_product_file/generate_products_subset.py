@@ -7,6 +7,10 @@ tmpdir = os.getenv('TMPDIR')
 product_module_code = os.getenv('PRODUCT_MODULE')
 product_group_code = os.getenv('PRODUCT_GROUP')
 
+print('Temp dir:', tmpdir)
+print('Product module code:', product_module_code)
+print('Product group code:', product_group_code)
+
 # Define the path to the TSV file
 prod_file = os.path.join(tmpdir, 'products.tsv')
 

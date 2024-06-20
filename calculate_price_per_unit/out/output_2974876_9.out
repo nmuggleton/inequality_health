@@ -1,0 +1,31 @@
+Year is 2007
+Product group is 6011
+Product module is 8471
+# Host myfiles.warwick.ac.uk found: line 6
+# Host myfiles.warwick.ac.uk found: line 7
+# Host myfiles.warwick.ac.uk found: line 8
+/home/wbs/bsstng/.ssh/known_hosts updated.
+Original contents retained as /home/wbs/bsstng/.ssh/known_hosts.old
+Starting sftp file transfer...
+spawn sftp u1774743@myfiles.warwick.ac.uk
+u1774743@myfiles.warwick.ac.uk's password: 
+Connected to myfiles.warwick.ac.uk.
+sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Dat a/nielsen_extracts/RMS/2007/Movement_Files/6011_2007
+sftp> lcd /tmp/tmp.IgupimR0GD
+sftp> mget 8471_2007.tsv
+Fetching /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Data/nielsen_extracts/RMS/2007/Movement_Files/6011_2007/8471_2007.tsv to 8471_2007.tsv
+8471_2007.tsv                                   0%    0     0.0KB/s   --:-- ETA8471_2007.tsv                                   3%   99MB  98.9MB/s   00:30 ETA8471_2007.tsv                                   7%  247MB 103.8MB/s   00:27 ETA8471_2007.tsv                                  11%  363MB 105.0MB/s   00:26 ETA8471_2007.tsv                                  16%  503MB 108.5MB/s   00:24 ETA8471_2007.tsv                                  21%  662MB 113.6MB/s   00:21 ETA8471_2007.tsv                                  24%  755MB 111.5MB/s   00:21 ETA8471_2007.tsv                                  26%  809MB 105.8MB/s   00:21 ETA8471_2007.tsv                                  29%  907MB 105.0MB/s   00:21 ETA8471_2007.tsv                                  31%  987MB 102.4MB/s   00:20 ETA8471_2007.tsv                                  34% 1077MB 101.2MB/s   00:20 ETA8471_2007.tsv                                  37% 1179MB 101.3MB/s   00:19 ETA8471_2007.tsv                                  41% 1287MB 102.0MB/s   00:17 ETA8471_2007.tsv                                  45% 1415MB 104.6MB/s   00:16 ETA8471_2007.tsv                                  49% 1551MB 107.7MB/s   00:14 ETA8471_2007.tsv                                  53% 1667MB 108.5MB/s   00:13 ETA8471_2007.tsv                                  56% 1768MB 107.8MB/s   00:12 ETA8471_2007.tsv                                  60% 1879MB 108.1MB/s   00:11 ETA8471_2007.tsv                                  64% 2016MB 111.0MB/s   00:09 ETA8471_2007.tsv                                  67% 2115MB 109.8MB/s   00:09 ETA8471_2007.tsv                                  70% 2207MB 108.0MB/s   00:08 ETA8471_2007.tsv                                  76% 2367MB 113.2MB/s   00:06 ETA8471_2007.tsv                                  79% 2471MB 112.3MB/s   00:05 ETA8471_2007.tsv                                  83% 2591MB 113.0MB/s   00:04 ETA8471_2007.tsv                                  87% 2729MB 115.6MB/s   00:03 ETA8471_2007.tsv                                  93% 2903MB 121.4MB/s   00:01 ETA8471_2007.tsv                                  95% 2979MB 116.9MB/s   00:01 ETA8471_2007.tsv                                  98% 3063MB 113.6MB/s   00:00 ETA8471_2007.tsv                                 100% 3112MB 113.2MB/s   00:27    
+sftp> bye
+Contents of TMPDIR after sftp transfer:
+total 3.1G
+-rwxr-x--- 1 bsstng bsstng 3.1G Jun 20 14:18 8471_2007.tsv
+Creating SQLite database and importing TSV file...
+delete
+exclusive
+delete
+Creating index on 'prmult'...
+Adding 'mean_price' column...
+Optimizing PRAGMA settings for bulk updates...
+delete
+exclusive
+Starting batch updates...

@@ -25,12 +25,6 @@ send "$PASSWORD\r"
 
 # Navigate to the desired directory
 expect "sftp>"
-send "pwd\r"
-expect "sftp>"
-send "cd \Shared533--BARLEVIN\r"
-expect "sftp>"
-send "ls\r"
-expect "sftp>"
 send "cd $REMOTEDIR/2006-2020_Scanner_Data/nielsen_extracts/RMS/$YEAR/Movement_Files/${PRODUCT_GROUP}_$YEAR\r"
 expect "sftp>"
 

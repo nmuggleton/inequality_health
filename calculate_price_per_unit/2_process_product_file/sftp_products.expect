@@ -34,6 +34,6 @@ send "lcd $env(TMPDIR)\r"
 expect "sftp>"
 
 # Download the .tsv files
-send "mget *.tsv\r"
+send "mget products.tsv\r"
 expect "sftp>"
 send "bye\r"
