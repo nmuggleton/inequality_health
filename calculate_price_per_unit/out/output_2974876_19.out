@@ -1,27 +1,0 @@
-Year is 2007
-Product group is 2506
-Product module is 3592
-Starting sftp file transfer...
-spawn sftp u1774743@myfiles.warwick.ac.uk
-u1774743@myfiles.warwick.ac.uk's password: 
-Connected to myfiles.warwick.ac.uk.
-sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Dat a/nielsen_extracts/RMS/2007/Movement_Files/2506_2007
-sftp> lcd /tmp/tmp.BtFCQLEJxW
-sftp> mget 3592_2007.tsv
-Fetching /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Data/nielsen_extracts/RMS/2007/Movement_Files/2506_2007/3592_2007.tsv to 3592_2007.tsv
-3592_2007.tsv                                   0%    0     0.0KB/s   --:-- ETA3592_2007.tsv                                  27%  119MB 118.8MB/s   00:02 ETA3592_2007.tsv                                  47%  206MB 115.7MB/s   00:01 ETA3592_2007.tsv                                  79%  343MB 117.7MB/s   00:00 ETA3592_2007.tsv                                 100%  431MB 111.5MB/s   00:03    
-sftp> bye
-Contents of TMPDIR after sftp transfer:
-total 432M
--rwxr-x--- 1 bsstng bsstng 432M Jun 20 14:20 3592_2007.tsv
-Creating SQLite database and importing TSV file...
-delete
-exclusive
-delete
-Creating index on 'prmult'...
-Adding 'mean_price' column...
-Optimizing PRAGMA settings for bulk updates...
-delete
-exclusive
-Starting batch updates...
-Processing batch with offset 0...

@@ -1,93 +1,0 @@
-Year is 2007
-Product group is 6011
-Product module is 8477
-Starting sftp file transfer...
-spawn sftp u1774743@myfiles.warwick.ac.uk
-u1774743@myfiles.warwick.ac.uk's password: 
-Connected to myfiles.warwick.ac.uk.
-sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Dat a/nielsen_extracts/RMS/2007/Movement_Files/6011_2007
-sftp> lcd /tmp/tmp.p7sSKf0dby
-sftp> mget 8477_2007.tsv
-Fetching /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Data/nielsen_extracts/RMS/2007/Movement_Files/6011_2007/8477_2007.tsv to 8477_2007.tsv
-8477_2007.tsv                                   0%    0     0.0KB/s   --:-- ETA8477_2007.tsv                                 100%   19MB  65.2MB/s   00:00    
-sftp> bye
-Contents of TMPDIR after sftp transfer:
-total 20M
--rwxr-x--- 1 bsstng bsstng 20M Jun 20 14:18 8477_2007.tsv
-Creating SQLite database and importing TSV file...
-delete
-exclusive
-delete
-Creating index on 'prmult'...
-Adding 'mean_price' column...
-Optimizing PRAGMA settings for bulk updates...
-delete
-exclusive
-Starting batch updates...
-Processing batch with offset 0...
-Batch updates completed.
-Calculating mean mean_price and total_sold...
-Re-enabling normal settings...
-delete
-SQLite database size:
--rw-r----- 1 bsstng bsstng 34M Jun 20 14:18 /tmp/tmp.p7sSKf0dby/tmp.db
-Movement file processed.
-# Host myfiles.warwick.ac.uk found: line 6
-# Host myfiles.warwick.ac.uk found: line 7
-# Host myfiles.warwick.ac.uk found: line 8
-/home/wbs/bsstng/.ssh/known_hosts updated.
-Original contents retained as /home/wbs/bsstng/.ssh/known_hosts.old
-spawn sftp u1774743@myfiles.warwick.ac.uk
-u1774743@myfiles.warwick.ac.uk's password: 
-Connected to myfiles.warwick.ac.uk.
-sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Dat a
-sftp> ls
-Master_Files_2006-2020
-SCANNER_DATA_2009.tgz
-SCANNER_DATA_2010.tgz
-SCANNER_DATA_2011.tgz
-SCANNER_DATA_2012.tgz
-SCANNER_DATA_2013.tgz
-SCANNER_DATA_2014.tgz
-SCANNER_DATA_2015.tgz
-SCANNER_DATA_2016.tgz
-SCANNER_DATA_2017.tgz
-SCANNER_DATA_2018.tgz
-SCANNER_DATA_2019.tgz
-SCANNER_DATA_2020.tgz
-nielsen_extracts
-sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Dat a/Master_Files_2006-2020/Latest
-sftp> lcd /tmp/tmp.p7sSKf0dby
-sftp> mget products.tsv
-Fetching /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Data/Master_Files_2006-2020/Latest/products.tsv to products.tsv
-products.tsv                                    0%    0     0.0KB/s   --:-- ETAproducts.tsv                                    4%   39MB  38.8MB/s   00:21 ETAproducts.tsv                                   11%  103MB  41.3MB/s   00:19 ETAproducts.tsv                                   21%  191MB  46.0MB/s   00:15 ETAproducts.tsv                                   30%  270MB  49.4MB/s   00:12 ETAproducts.tsv                                   40%  363MB  53.7MB/s   00:09 ETAproducts.tsv                                   50%  453MB  57.3MB/s   00:07 ETAproducts.tsv                                   60%  538MB  60.1MB/s   00:05 ETAproducts.tsv                                   71%  634MB  63.6MB/s   00:04 ETAproducts.tsv                                   81%  728MB  66.8MB/s   00:02 ETAproducts.tsv                                   92%  823MB  69.5MB/s   00:00 ETAproducts.tsv                                  100%  890MB  83.4MB/s   00:10    
-sftp> Contents of TMPDIR after sftp transfer:
-total 974M
--rwxr-x--- 1 bsstng bsstng  20M Jun 20 14:18 8477_2007.tsv
--rwxr-x--- 1 bsstng bsstng 891M Jun 20 14:19 products.tsv
--rw-r----- 1 bsstng bsstng  34M Jun 20 14:18 tmp.db
-Temp dir: /tmp/tmp.p7sSKf0dby
-Product module code: 8477
-Product group code: 6011
-Creating SQLite database and importing TSV file...
-Data import completed.
-SQLite database size:
--rw-r----- 1 bsstng bsstng 34M Jun 20 14:19 /tmp/tmp.p7sSKf0dby/tmp.db
-Script completed successfully.
-# Host myfiles.warwick.ac.uk found: line 6
-# Host myfiles.warwick.ac.uk found: line 7
-# Host myfiles.warwick.ac.uk found: line 8
-/home/wbs/bsstng/.ssh/known_hosts updated.
-Original contents retained as /home/wbs/bsstng/.ssh/known_hosts.old
-spawn sftp u1774743@myfiles.warwick.ac.uk
-u1774743@myfiles.warwick.ac.uk's password: 
-Connected to myfiles.warwick.ac.uk.
-sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts_scanner
-sftp> put -r /tmp/tmp.p7sSKf0dby/calculations
-Uploading /tmp/tmp.p7sSKf0dby/calculations/ to /Shared533--BARLEVIN/consumer_panel/kilts_scanner/calculations
-Entering /tmp/tmp.p7sSKf0dby/calculations/
-Entering /tmp/tmp.p7sSKf0dby/calculations/2007
-Entering /tmp/tmp.p7sSKf0dby/calculations/2007/6011
-8477_2007.csv                                   0%    0     0.0KB/s   --:-- ETA8477_2007.csv                                 100% 2887     4.5MB/s   00:00    
-sftp> bye
-Script completed successfully.

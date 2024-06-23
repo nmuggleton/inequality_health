@@ -1,25 +1,0 @@
-Year is 2007
-Product group is 6011
-Product module is 8470
-# Host myfiles.warwick.ac.uk found: line 6
-# Host myfiles.warwick.ac.uk found: line 7
-# Host myfiles.warwick.ac.uk found: line 8
-/home/wbs/bsstng/.ssh/known_hosts updated.
-Original contents retained as /home/wbs/bsstng/.ssh/known_hosts.old
-Starting sftp file transfer...
-spawn sftp u1774743@myfiles.warwick.ac.uk
-u1774743@myfiles.warwick.ac.uk's password: 
-Connected to myfiles.warwick.ac.uk.
-sftp> cd /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Dat a/nielsen_extracts/RMS/2007/Movement_Files/6011_2007
-sftp> lcd /tmp/tmp.iVnYIiD7uP
-sftp> mget 8470_2007.tsv
-Fetching /Shared533--BARLEVIN/consumer_panel/kilts_scanner/2006-2020_Scanner_Data/nielsen_extracts/RMS/2007/Movement_Files/6011_2007/8470_2007.tsv to 8470_2007.tsv
-8470_2007.tsv                                   0%    0     0.0KB/s   --:-- ETA8470_2007.tsv                                   1%   67MB  67.0MB/s   01:12 ETA8470_2007.tsv                                   2%  122MB  65.8MB/s   01:13 ETA8470_2007.tsv                                   3%  163MB  63.3MB/s   01:15 ETA8470_2007.tsv                                   5%  255MB  66.2MB/s   01:10 ETA8470_2007.tsv                                   7%  363MB  70.4MB/s   01:04 ETA8470_2007.tsv                                   9%  467MB  73.7MB/s   01:00 ETA8470_2007.tsv                                  11%  553MB  75.0MB/s   00:58 ETA8470_2007.tsv                                  13%  663MB  78.4MB/s   00:54 ETA8470_2007.tsv                                  15%  775MB  81.8MB/s   00:50 ETA8470_2007.tsv                                  18%  899MB  86.0MB/s   00:46 ETA8470_2007.tsv                                  19%  962MB  83.7MB/s   00:47 ETA8470_2007.tsv                                  21% 1039MB  83.1MB/s   00:46 ETA8470_2007.tsv                                  22% 1127MB  83.5MB/s   00:45 ETA8470_2007.tsv                                  23% 1184MB  80.9MB/s   00:46 ETA8470_2007.tsv                                  25% 1278MB  82.2MB/s   00:44 ETA8470_2007.tsv                                  27% 1340MB  80.2MB/s   00:44 ETA8470_2007.tsv                                  28% 1431MB  81.3MB/s   00:43 ETA8470_2007.tsv                                  30% 1509MB  80.9MB/s   00:42 ETA8470_2007.tsv                                  32% 1604MB  82.4MB/s   00:40 ETA8470_2007.tsv                                  34% 1697MB  83.4MB/s   00:38 ETA8470_2007.tsv                                  36% 1787MB  84.1MB/s   00:37 ETA8470_2007.tsv                                  38% 1879MB  84.8MB/s   00:36 ETA8470_2007.tsv                                  39% 1967MB  85.1MB/s   00:34 ETA8470_2007.tsv                                  41% 2071MB  87.1MB/s   00:32 ETA8470_2007.tsv                                  44% 2207MB  91.9MB/s   00:29 ETA8470_2007.tsv                                  47% 2330MB  95.0MB/s   00:27 ETA8470_2007.tsv                                  48% 2411MB  93.6MB/s   00:26 ETA8470_2007.tsv                                  50% 2511MB  94.3MB/s   00:25 ETA8470_2007.tsv                                  53% 2650MB  98.8MB/s   00:23 ETA8470_2007.tsv                                  56% 2802MB 104.1MB/s   00:20 ETA8470_2007.tsv                                  58% 2911MB 104.6MB/s   00:19 ETA8470_2007.tsv                                  61% 3023MB 105.3MB/s   00:18 ETA8470_2007.tsv                                  63% 3155MB 108.0MB/s   00:16 ETA8470_2007.tsv                                  65% 3214MB 103.1MB/s   00:16 ETA8470_2007.tsv                                  66% 3271MB  98.5MB/s   00:16 ETA8470_2007.tsv                                  68% 3374MB  98.9MB/s   00:15 ETA8470_2007.tsv                                  70% 3487MB 100.3MB/s   00:14 ETA8470_2007.tsv                                  73% 3615MB 103.1MB/s   00:12 ETA8470_2007.tsv                                  75% 3751MB 106.4MB/s   00:11 ETA8470_2007.tsv                                  78% 3887MB 109.3MB/s   00:09 ETA8470_2007.tsv                                  81% 4039MB 113.6MB/s   00:07 ETA8470_2007.tsv                                  83% 4125MB 110.8MB/s   00:07 ETA8470_2007.tsv                                  85% 4223MB 109.6MB/s   00:06 ETA8470_2007.tsv                                  86% 4275MB 103.8MB/s   00:06 ETA8470_2007.tsv                                  89% 4407MB 106.6MB/s   00:04 ETA8470_2007.tsv                                  92% 4547MB 110.0MB/s   00:03 ETA8470_2007.tsv                                  94% 4647MB 109.0MB/s   00:02 ETA8470_2007.tsv                                  96% 4767MB 110.0MB/s   00:01 ETA8470_2007.tsv                                  99% 4903MB 112.7MB/s   00:00 ETA8470_2007.tsv                                 100% 4938MB 100.3MB/s   00:49    
-sftp> bye
-Contents of TMPDIR after sftp transfer:
-total 4.9G
--rwxr-x--- 1 bsstng bsstng 4.9G Jun 20 14:19 8470_2007.tsv
-Creating SQLite database and importing TSV file...
-delete
-exclusive
-delete

@@ -120,8 +120,5 @@ dmypy.json
 cython_debug/
 
 # Ignore SLURM output and error files
-slurm-*.out
-slurm-*.err
-
-output-*.out
-error-*.err
+*.out
+*.err

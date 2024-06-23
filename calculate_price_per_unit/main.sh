@@ -30,8 +30,11 @@ export REMOTEDIR="/Shared533--BARLEVIN/consumer_panel/kilts_scanner"
 # Run the slurm script
 
 # Define the range of arrays for each job
-START=1
-END=4154
+#START=1
+#END=4154
+#STEP=500
+START=1501
+END=2000
 STEP=500
 
 # Loop over the range and submit a job for each subset of tasks
