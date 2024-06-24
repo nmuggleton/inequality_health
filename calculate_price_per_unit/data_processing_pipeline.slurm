@@ -39,7 +39,24 @@ module purge
 module load GCCcore/13.2.0
 module load Python/3.11.5
 
-# Run the scripts
-source 1_process_movement_file/main.sh
-source 2_process_product_file/main.sh
-source 3_calculate_ppu/main.sh
+# Capture start time
+START_TIME=$(date +%s)
+
+# Ensure the script has executable permissions
+chmod +x 1_process_movement_file/main.sh
+chmod +x 2_process_product_file/main.sh
+chmod +x 3_calculate_ppu/main.sh
+
+# Run the scripts and capture their PID
+./1_process_movement_file/main.sh
+./2_process_product_file/main.sh
+./3_calculate_ppu/main.sh
+
+# Capture end time
+END_TIME=$(date +%s)
+
+# Calculate elapsed time
+ELAPSED_TIME=$(date -u -d "0 $END_TIME seconds - $START_TIME seconds" +"%H:%M:%S")
+
+# Write to output file
+echo "$YEAR,$PRODUCT_GROUP,$PRODUCT_MODULE,$ELAPSED_TIME" >> job_times.csv

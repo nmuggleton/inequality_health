@@ -5,10 +5,13 @@
 cd 2_process_product_file/ || exit
 
 ## Remove the old host key from the known_hosts file
-ssh-keygen -R "$HOST"
+#ssh-keygen -R "$HOST"
 
 ## Attempt to connect and fetch the new host key
 ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+
+## Add a delay
+sleep 5
 
 ## Run the expect script to perform the sftp transfer
 expect sftp_products.expect "$PASS" "$USER" "$HOST" "$REMOTEDIR"
@@ -28,12 +31,19 @@ rm "$TMPDIR"/products.tsv
 SIZE_FILE="$TMPDIR/size1_units.tsv"
 
 ## Verify the file exists
-if [ ! -f "$SIZE_FILE" ]; then
-    echo "TSV file does not exist: $SIZE_FILE"
-    exit 1
+if [ -z "$SIZE_FILE" ]; then
+  echo "SIZE_FILE environment variable is not set."
+  exit 1
+fi
+
+if [ -z "$DB_FILE" ]; then
+  echo "DB_FILE environment variable is not set."
+  exit 1
 fi
 
 echo "Creating SQLite database and importing TSV file..."
+
+chmod a+r $SIZE_FILE
 
 ## Create the SQLite database and import only the required columns
 sqlite3 "$DB_FILE" <<EOF
@@ -45,7 +55,7 @@ CREATE TABLE IF NOT EXISTS size (
 );
 
 .mode tabs
-.import $SIZE_FILE size
+.import "$SIZE_FILE" size
 
 EOF
 

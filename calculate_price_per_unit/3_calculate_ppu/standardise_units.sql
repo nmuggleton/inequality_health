@@ -60,15 +60,16 @@ FROM output;
 -- Step 3: Calculate the mean and standard deviation for each group
 CREATE TEMPORARY TABLE mean_std AS
 SELECT size1_units,
-       AVG(price_per_unit) AS mean_value
-FROM standardised_output
-GROUP BY size1_units;
-
--- Calculate the standard deviation separately
-UPDATE mean_std
-SET std_dev = (SELECT SQRT(SUM((price_per_unit - mean_value) * (price_per_unit - mean_value)) / COUNT(price_per_unit))
-               FROM standardised_output
-               WHERE size1_units = mean_std.size1_units);
+       mean_value,
+       (SELECT SQRT(SUM((price_per_unit - mean_value) * (price_per_unit - mean_value)) / COUNT(price_per_unit))
+        FROM standardised_output
+        WHERE size1_units = mean_std.size1_units) AS std_dev
+FROM (
+    SELECT size1_units,
+           AVG(price_per_unit) AS mean_value
+    FROM standardised_output
+    GROUP BY size1_units
+) AS mean_std;
 
 -- Step 4: Update the price_per_unit in standardised_output
 UPDATE standardised_output
@@ -77,4 +78,3 @@ SET price_per_unit = (price_per_unit - (SELECT mean_value FROM mean_std WHERE si
 
 -- Step 5: Verify the standardised data
 SELECT * FROM standardised_output LIMIT 10;
-
