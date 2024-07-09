@@ -12,11 +12,11 @@ export REMOTEDIR="/Shared533--BARLEVIN/consumer_panel/kilts_scanner"
 ssh-keygen -R "$HOST"
 
 ## Attempt to connect and fetch the new host key
-ssh-keyscan -H "$HOST"
+ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
 
 ## Run the expect script to perform the sftp transfer.
 #echo "Starting sftp file transfer..."
-#expect sftp_array_transfer.expect "$PASS" "$USER" "$HOST" "$REMOTEDIR"
+expect sftp_array_transfer.expect "$PASS" "$USER" "$HOST" "$REMOTEDIR"
 
 ## Load the necessary modules and run the R script
 module purge
@@ -52,5 +52,6 @@ for ((i=START; i<=END; i+=STEP)); do
 
 done
 
-## Clean up the params folder
+## Clean up
 #rm params/*.txt
+#rm job_times.csv

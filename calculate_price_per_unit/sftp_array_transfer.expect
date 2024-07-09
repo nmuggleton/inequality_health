@@ -33,6 +33,8 @@ send "lcd params\r"
 expect "sftp>"
 send "get output.txt\r"
 expect "sftp>"
+expect "sftp>"
+send "rm output.txt\r"
 
 # End the sftp session
 send "bye\r"
