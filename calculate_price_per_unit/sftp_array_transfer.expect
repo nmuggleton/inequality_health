@@ -12,30 +12,59 @@ set PASSWORD [exec cat $PASS]
 # Set a longer timeout to accommodate large file transfers
 set timeout 600
 
-# Start the sftp session
-spawn sftp $USER@$HOST
+proc sftp_session {USER HOST PASSWORD REMOTEDIR} {
+    spawn sftp $USER@$HOST
 
-# Automate the login process
-expect "password:"
-send "$PASSWORD\r"
+    expect {
+        "password:" {
+            send "$PASSWORD\r"
+            exp_continue
+        }
+        "Permission denied, please try again." {
+            puts "Permission denied, retrying..."
+            return 1
+        }
+        "sftp>" {
+            # Navigate to the desired directory
+            send "cd $REMOTEDIR/2006-2020_Scanner_Data/nielsen_extracts/RMS\r"
+            expect "sftp>"
 
-# Navigate to the desired directory
-expect "sftp>"
-send "cd $REMOTEDIR/2006-2020_Scanner_Data/nielsen_extracts/RMS\r"
-expect "sftp>"
+            # Store names
+            send "find ./20?? -type f -name \"*.tsv\" > output.txt\r"
+            expect "sftp>"
 
-# Store names
-send "find ./20?? -type f -name "*.tsv" > output.txt\r"
-expect "sftp>"
+            # Download the file to the local directory 'params'
+            send "lcd params\r"
+            expect "sftp>"
+            send "get output.txt\r"
+            expect "sftp>"
+            send "rm output.txt\r"
 
-# Download the file to the local directory 'params'
-send "lcd params\r"
-expect "sftp>"
-send "get output.txt\r"
-expect "sftp>"
-expect "sftp>"
-send "rm output.txt\r"
+            # End the sftp session
+            send "bye\r"
+            expect eof
+        }
+    }
+    return 0
+}
 
-# End the sftp session
-send "bye\r"
-expect eof
+# Retry logic for sftp session
+set retry_count 0
+set max_retries 5
+set success 0
+
+while {$retry_count < $max_retries} {
+    set result [sftp_session $USER $HOST $PASSWORD $REMOTEDIR]
+    if {$result == 0} {
+        set success 1
+        break
+    }
+    incr retry_count
+    puts "Retry attempt: $retry_count"
+    sleep 5
+}
+
+if {$success == 0} {
+    puts "Failed to login after $max_retries attempts."
+    exit 1
+}

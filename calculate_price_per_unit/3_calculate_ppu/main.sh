@@ -15,13 +15,10 @@ echo -e ".mode tabs\n.headers on\nSELECT * FROM standardised_output;" \
     | sqlite3 "$DB_FILE" > "${TMPDIR}/calculations/${YEAR}/${PRODUCT_GROUP}/${PRODUCT_MODULE}_${YEAR}.csv"
 
 ## Remove the old host key from the known_hosts file
-#ssh-keygen -R "$HOST"
+ssh-keygen -R "$HOST"
 
 ## Attempt to connect and fetch the new host key
 ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
-
-## Add a delay
-sleep 5
 
 # Call the expect script to upload the .tsv file
 expect sftp_upload.expect "$PASS" "$USER" "$HOST" "$REMOTEDIR" "$TMPDIR"

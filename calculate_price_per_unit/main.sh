@@ -26,6 +26,7 @@ module load R/4.3.3
 
 ## Run the R script to create the array
 cd $LOCALDIR/src/calculate_price_per_unit || exit
+mkdir params
 Rscript make_array.R
 
 # Run the slurm script
@@ -53,5 +54,8 @@ for ((i=START; i<=END; i+=STEP)); do
 done
 
 ## Clean up
-#rm params/*.txt
-#rm job_times.csv
+rm -r params
+rm job_times.csv
+
+
+

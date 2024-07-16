@@ -10,9 +10,6 @@ cd 1_process_movement_file/ || exit
 ## Attempt to connect and fetch the new host key
 ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
 
-## Add a delay
-sleep 5
-
 ## Run the expect script to perform the sftp transfer
 echo "Starting sftp file transfer..."
 expect sftp_file_transfer.expect "$PASS" "$USER" "$HOST" "$REMOTEDIR" "$YEAR" "$PRODUCT_GROUP" "$TMPDIR" "$PRODUCT_MODULE"

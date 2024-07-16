@@ -10,10 +10,9 @@ files <- files[!str_detect(V1, 'Annual_Files')]
 
 # Extract the year (a four-digit number) from the file names in the first column
 files[, year := str_extract(V1, '\\d{4}')]
-files <- files[as.numeric(year) %between% c(2011, 2020)]  # Remove once run
 
 # Extract the product group (the four-digit number before an underscore) from the file names
-files[, product_group := str_extract(V1, '\\d{4}(?=_)')]
+files[, product_group := str_extract(V1, '(?<=Movement_Files/)\\d{1,4}(?=_)')]
 
 # Extract the product module (the four-digit number before '_<year>.tsv') from the file names
 files[, product_module := str_extract(V1, '\\d{4}(?=_\\d{4}.tsv)')]

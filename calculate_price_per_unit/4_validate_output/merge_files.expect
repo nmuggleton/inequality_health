@@ -5,10 +5,8 @@ set PASS [lindex $argv 0]
 set USER [lindex $argv 1]
 set HOST [lindex $argv 2]
 set REMOTEDIR [lindex $argv 3]
-set YEAR [lindex $argv 4]
-set PRODUCT_GROUP [lindex $argv 5]
-set TMPDIR [lindex $argv 6]
-set PRODUCT_MODULE [lindex $argv 7]
+set TMPDIR [lindex $argv 4]
+set YEAR [lindex $argv 5]
 
 # Read the password from the file
 set PASSWORD [exec cat $PASS]
@@ -16,7 +14,7 @@ set PASSWORD [exec cat $PASS]
 # Set a longer timeout to accommodate large file transfers
 set timeout 600
 
-proc sftp_session {USER HOST PASSWORD REMOTEDIR YEAR PRODUCT_GROUP TMPDIR PRODUCT_MODULE} {
+proc sftp_session {USER HOST PASSWORD REMOTEDIR TMPDIR YEAR} {
     spawn sftp $USER@$HOST
 
     expect {
@@ -29,20 +27,15 @@ proc sftp_session {USER HOST PASSWORD REMOTEDIR YEAR PRODUCT_GROUP TMPDIR PRODUC
             return 1
         }
         "sftp>" {
-            # Navigate to the desired directory
-            send "cd $REMOTEDIR/2006-2020_Scanner_Data/nielsen_extracts/RMS/$YEAR/Movement_Files/${PRODUCT_GROUP}_$YEAR\r"
+            # Navigate to the base directory and download all files for the year
+            send "lcd $LOCALDIR\r"
             expect "sftp>"
-
-            # Change the local directory
-            send "lcd $TMPDIR\r"
+            send "cd $REMOTEDIR/calculations/$YEAR\r"
             expect "sftp>"
-
-            # Download the file
-            send "mget ${PRODUCT_MODULE}_$YEAR.tsv\r"
-            expect {
-                "sftp>" { send "bye\r"; exp_continue }
-                timeout { puts "Transfer incomplete, retrying..."; send "mget ${PRODUCT_MODULE}_$YEAR.tsv\r"; exp_continue }
-            }
+            send "mget -r *\r"
+            expect "sftp>"
+            send "bye\r"
+            expect eof
         }
     }
     return 0
@@ -54,7 +47,7 @@ set max_retries 5
 set success 0
 
 while {$retry_count < $max_retries} {
-    set result [sftp_session $USER $HOST $PASSWORD $REMOTEDIR $YEAR $PRODUCT_GROUP $TMPDIR $PRODUCT_MODULE]
+    set result [sftp_session $USER $HOST $PASSWORD $REMOTEDIR $LOCALDIR $YEAR]
     if {$result == 0} {
         set success 1
         break
@@ -67,4 +60,15 @@ while {$retry_count < $max_retries} {
 if {$success == 0} {
     puts "Failed to login after $max_retries attempts."
     exit 1
+}
+
+# Merge files locally
+exec sh -c {
+    cd $LOCALDIR
+    echo -e "upc\tmean_price\ttotal_sold\tsize1_amount\tsize1_units\tprice_per_unit\tproduct_group\tproduct_code" > merged_${YEAR}.csv
+    for file in ${TMPDIR}/*/*.csv; do
+        product_group=$(basename $(dirname $file) | cut -d'_' -f1)
+        product_code=$(basename $file .csv | cut -d'_' -f1)
+        tail -n +2 $file | awk -v pg=$product_group -v pc=$product_code '{print $0"\t"pg"\t"pc}' >> merged_${YEAR}.csv
+    done
 }

@@ -6,30 +6,59 @@ set USER [lindex $argv 1]
 set HOST [lindex $argv 2]
 set REMOTEDIR [lindex $argv 3]
 
-
 # Read the password from the file
 set PASSWORD [exec cat $PASS]
 
 # Set a longer timeout to accommodate large file transfers
 set timeout 600
 
-# Start the sftp session
-spawn sftp $USER@$HOST
+proc sftp_session {USER HOST PASSWORD REMOTEDIR} {
+    spawn sftp $USER@$HOST
 
-# Automate the login process
-expect "password:"
-send "$PASSWORD\r"
+    expect {
+        "password:" {
+            send "$PASSWORD\r"
+            exp_continue
+        }
+        "Permission denied, please try again." {
+            puts "Permission denied, retrying..."
+            return 1
+        }
+        "sftp>" {
+            # Navigate to the desired directory
+            send "cd $REMOTEDIR/2006-2020_Scanner_Data/Master_Files_2006-2020/Latest\r"
+            expect "sftp>"
 
-# Navigate to the desired directory
-expect "sftp>"
-send "cd $REMOTEDIR/2006-2020_Scanner_Data/Master_Files_2006-2020/Latest\r"
-expect "sftp>"
+            # Change the local directory
+            send "lcd $env(TMPDIR)\r"
+            expect "sftp>"
 
-# Change the local directory
-send "lcd $env(TMPDIR)\r"
-expect "sftp>"
+            # Download the .tsv files
+            send "mget products.tsv\r"
+            expect "sftp>"
+            send "bye\r"
+        }
+    }
+    return 0
+}
 
-# Download the .tsv files
-send "mget products.tsv\r"
-expect "sftp>"
-send "bye\r"
+# Retry logic for sftp session
+set retry_count 0
+set max_retries 5
+set success 0
+
+while {$retry_count < $max_retries} {
+    set result [sftp_session $USER $HOST $PASSWORD $REMOTEDIR]
+    if {$result == 0} {
+        set success 1
+        break
+    }
+    incr retry_count
+    puts "Retry attempt: $retry_count"
+    sleep 5
+}
+
+if {$success == 0} {
+    puts "Failed to login after $max_retries attempts."
+    exit 1
+}
